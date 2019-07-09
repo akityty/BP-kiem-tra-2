@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    let Tivi = function (currentChannel,currentVolume,status) {
+        this.currentChannel = currentChannel;
+        this.currentVolume = currentVolume;
+        this.status = status;
+        this.setCurrentChannel = function (currentChannel) {
+            this.currentChannel = currentChannel;
+        };
+        this.getCurrentChannel = function () {
+            return this.currentChannel;
+        };
+        this.setCurrentVolume = function (currentVolume) {
+            this.currentVolume = currentVolume;
+        };
+        this.getCurrentVolume = function () {
+            return this.currentVolume;
+        };
+        this.setStatus = function (status) {
+            this.status = status;
+        };
+        this.getStatus = function () {
+            return this.status;
+        };
+        this.moveChannel = function (channelNumber) {
+            this.currentChannel = channelNumber;
+        };
+        this.adjustVolume = function (volume) {
+            this.currentVolume += volume;
+        }
+    };
+    let Remote = function (model) {
+        this.model = model;
+        this.setModel = function (model) {
+            this.model = model;
+        };
+        this.getModel = function () {
+            return this.model;
+        };
+        this.changeChannel  = function (tivi,numberChannel) {
+            tivi.moveChannel(numberChannel);
+        };
+        this.upVolume = function (tivi,numberVolume) {
+            tivi.adjustVolume(numberVolume);
+        };
+        this.onOffTivi  = function (tivi) {
+            tivi.status = !tivi.status;
+            if(tiviLg.status)
+                document.write("Tivi dang bat"+"<br>");
+            else
+                document.write("Tivi dang tat"+"<br>");
+        }
+    };
+    let tiviLg = new Tivi(1,20,false);
+    let remoteTiviLg  = new Remote(1);
+    remoteTiviLg.onOffTivi(tiviLg);
+    remoteTiviLg.changeChannel(tiviLg,7);
+    document.write("Tivi dang bat kenh: "+tiviLg.getCurrentChannel()+"<br>");
+    remoteTiviLg.changeChannel(tiviLg,3);
+    document.write("Tivi dang bat kenh: "+tiviLg.getCurrentChannel()+"<br>");
+    remoteTiviLg.upVolume(tiviLg,2);
+    document.write("Am luong cua tivi la: "+tiviLg.getCurrentVolume()+"<br>");
+    remoteTiviLg.onOffTivi(tiviLg);
+</script>
+</body>
+</html>

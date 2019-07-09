@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    let Mouse = function (name, weight, speed, status) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.status = status;
+        this.setName = function (name) {
+            this.name = name;
+        };
+        this.getName = function () {
+            return this.name;
+        };
+        this.setWeight = function (weight) {
+            this.weight = weight;
+        };
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.setSpeed = function (speed) {
+            this.speed = speed;
+        };
+        this.getSpeed = function () {
+            return this.speed;
+        };
+        this.setStatus = function (status) {
+            this.status = status;
+        };
+        this.getStatus = function () {
+            return this.status;
+        };
+        this.mouseSoulding = function () {
+            alert("chít chít");
+        }
+    };
+    let Cat = function (name, weight, speedMax) {
+        this.name = name;
+        this.weight = weight;
+        this.speedMax = speedMax;
+        this.setName = function (name) {
+            this.name = name;
+        };
+        this.getName = function () {
+            return this.name;
+        };
+        this.setWeight = function (weight) {
+            this.weight = weight;
+        };
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.setSpeedMax = function (speedMax) {
+            this.speedMax = speedMax;
+        };
+        this.getSpeedMax = function () {
+            return this.speedMax;
+        };
+        this.catSoulding = function () {
+            alert("meo meo");
+        };
+        this.catchMouse = function (speedOfMouse) {
+            return this.speedMax > speedOfMouse;
+        };
+        this.eatMouse = function (mouse) {
+            if (mouse.status) {
+                this.weight++;
+                alert("mèo này đã chén chuột này");
+                mouse.status = false;
+            } else {
+                alert("chuột đã chết không thèm được");
+            }
+        }
+    };
+    let rat = new Mouse("Rat", 1, 1, true);
+    let cat = new Cat("Cat",2 ,1 );
+    let speedOfMouse = rat.getSpeed();
+    rat.mouseSoulding();
+    cat.catSoulding();
+    let catchedCheck = cat.catchMouse(speedOfMouse);
+    if(catchedCheck){
+        alert("moè này đã bắt được chuột này");
+        cat.eatMouse(rat);
+    }else{
+        alert("Không bắt được thì sao mà Ăn được")
+    }
+
+alert("Trọng lượng của mèo: "+cat.getWeight());
+</script>
+</body>
+</html>

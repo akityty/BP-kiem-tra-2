@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai1</title>
+</head>
+<body>
+<script>
+    let Pharmacist = function (id, name, age, address) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.address = address;
+
+        this.setId = function (id) {
+            this.id = id;
+        };
+        this.getId = function () {
+            return this.id;
+        };
+        this.setName = function (name) {
+            this.name = name;
+        };
+        this.getName = function () {
+            return this.name;
+        };
+        this.setAge = function (age) {
+            this.age = age;
+        };
+        this.getAge = function () {
+            return this.age;
+        };
+        this.setAddress = function (address) {
+            this.address = address;
+        };
+        this.getAddress = function () {
+            return this.address;
+        }
+    };
+    let PharmacistManager = function () {
+        this.pharmacistList = [];
+        this.addPharmacist = function (pharmacist) {
+            this.pharmacistList.push(pharmacist);
+        };
+        this.displayPharmacistList = function () {
+            for (let i = 0; i < this.pharmacistList.length; i++) {
+                document.write("pharmacist " + i + ": id= " + this.pharmacistList[i].getId() +
+                    ", name= " + this.pharmacistList[i].getName() +
+                    ", age= " + this.pharmacistList[i].getAge() +
+                    ", address= " + this.pharmacistList[i].getAddress() + "<br>");
+            }
+        }
+    };
+    let pharmacist1 = new Pharmacist(1, "Nguyen Van Cong", 20, "Ha Noi");
+    let pharmacist2 = new Pharmacist(2, "Lo Van Duc", 99, "Ca Mau");
+    let pharmacistManager1 = new PharmacistManager();
+    pharmacistManager1.addPharmacist(pharmacist1);
+    pharmacistManager1.addPharmacist(pharmacist2);
+    pharmacistManager1.displayPharmacistList();
+</script>
+</body>
+</html>
